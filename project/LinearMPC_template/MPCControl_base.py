@@ -55,8 +55,10 @@ class MPCControl_base:
     def _setup_controller(self) -> None:
         #################################################
         # YOUR CODE HERE
+        cost = 0
+        constraints = []
 
-        self.ocp = ...
+        self.ocp = cp.Problem(cp.Minimize(cost), constraints)
 
         # YOUR CODE HERE
         #################################################
@@ -69,9 +71,7 @@ class MPCControl_base:
         A_discrete, B_discrete, _, _, _ = cont2discrete(system=(A, B, C, D), dt=Ts)
         return A_discrete, B_discrete
 
-    def get_u(
-        self, x0: np.ndarray, x_target: np.ndarray = None, u_target: np.ndarray = None
-    ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    def get_u(self, x0: np.ndarray, x_target: np.ndarray = None, u_target: np.ndarray = None) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
         #################################################
         # YOUR CODE HERE
 
